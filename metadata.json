@@ -1,0 +1,6 @@
+{
+  "name": "Para Hillary",
+  "description": "Una propuesta de amor mágica e interactiva para Hillary con cartas desplegables y viaje a las estrellas",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
