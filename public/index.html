@@ -31,7 +31,7 @@
       height: 100%;
       display: none;
       opacity: 0;
-      transition: opacity 0.6s ease;
+      transition: opacity 0.5s ease;
       overflow: hidden;
     }
     .screen.active {
@@ -39,8 +39,7 @@
       opacity: 1;
     }
 
-    /* Ambient Background Canvas */
-    #ambient-canvas, #tunnel-canvas, #galaxy-canvas {
+    #ambient-canvas, #tunnel-canvas, #galaxy-canvas, #survey-canvas {
       position: absolute;
       top: 0;
       left: 0;
@@ -49,7 +48,6 @@
       z-index: 1;
     }
 
-    /* Content Overlay */
     .content-overlay {
       position: relative;
       z-index: 2;
@@ -59,24 +57,24 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 16px;
     }
 
     /* Top Bar Controls */
     .top-bar {
       position: absolute;
-      top: 16px;
-      left: 16px;
-      right: 16px;
+      top: 14px;
+      left: 14px;
+      right: 14px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       z-index: 10;
     }
     .pill-btn {
-      background: rgba(31, 13, 61, 0.75);
-      border: 1px solid rgba(255, 209, 102, 0.5);
-      padding: 6px 14px;
+      background: rgba(30, 16, 53, 0.88);
+      border: 1px solid rgba(255, 209, 102, 0.65);
+      padding: 7px 16px;
       border-radius: 20px;
       font-size: 13px;
       font-weight: 700;
@@ -89,10 +87,10 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     }
     .icon-btn {
-      width: 38px;
-      height: 38px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      background: rgba(31, 13, 61, 0.75);
+      background: rgba(30, 16, 53, 0.88);
       border: 1px solid rgba(247, 186, 197, 0.5);
       color: #FFD166;
       display: flex;
@@ -100,15 +98,16 @@
       justify-content: center;
       cursor: pointer;
       backdrop-filter: blur(8px);
+      font-size: 18px;
     }
 
-    /* Welcome Card */
+    /* Cards */
     .card-glass {
-      background: rgba(30, 16, 53, 0.92);
-      border: 1.5px solid rgba(255, 42, 122, 0.6);
-      box-shadow: 0 10px 30px rgba(255, 42, 122, 0.35);
+      background: rgba(30, 16, 53, 0.94);
+      border: 1.5px solid rgba(255, 42, 122, 0.65);
+      box-shadow: 0 10px 32px rgba(255, 42, 122, 0.35);
       border-radius: 28px;
-      padding: 24px 20px;
+      padding: 22px 18px;
       max-width: 440px;
       width: 100%;
       text-align: center;
@@ -117,30 +116,35 @@
     .gif-container {
       width: 180px;
       height: 140px;
-      margin: 0 auto 14px auto;
+      margin: 0 auto 12px auto;
       border-radius: 18px;
       overflow: hidden;
       border: 1.5px solid rgba(255, 209, 102, 0.6);
       box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .gif-container img {
+    .gif-container video, .gif-container img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
     }
     .card-title {
       font-family: 'Dancing Script', cursive;
-      font-size: 40px;
+      font-size: 38px;
       font-weight: 700;
       color: #ffffff;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
     .card-text {
       font-family: 'Caveat', cursive;
-      font-size: 24px;
+      font-size: 23px;
       line-height: 1.35;
       color: #FFF0F3;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
     .voice-badge {
       display: inline-block;
@@ -150,7 +154,7 @@
       color: #FFD166;
       border: 1px solid rgba(255, 42, 122, 0.4);
       background: rgba(255, 42, 122, 0.15);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     /* Primary Action Buttons */
@@ -160,12 +164,12 @@
       border: none;
       padding: 16px 36px;
       border-radius: 30px;
-      font-size: 19px;
+      font-size: 20px;
       font-weight: 800;
       cursor: pointer;
       box-shadow: 0 8px 24px rgba(255, 42, 122, 0.5);
       transition: transform 0.2s, box-shadow 0.2s;
-      margin-top: 24px;
+      margin-top: 20px;
       max-width: 340px;
       width: 85%;
     }
@@ -173,24 +177,60 @@
       transform: scale(0.96);
     }
 
-    /* Survey Elements */
+    /* Survey Slide Elements with Smooth Transitions */
     .step-dots {
       display: flex;
       gap: 8px;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
+      align-items: center;
     }
     .dot {
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.3);
-      transition: all 0.3s;
+      background: rgba(255,255,255,0.25);
+      transition: all 0.35s ease;
     }
     .dot.active {
       background: #FF2A7A;
       width: 14px;
       height: 14px;
+      box-shadow: 0 0 10px #FF2A7A;
     }
+
+    .survey-viewport {
+      position: relative;
+      width: 100%;
+      max-width: 440px;
+      min-height: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .survey-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      margin: 0 auto;
+      transition: transform 0.48s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.48s ease;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(110%);
+    }
+    .survey-slide.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(0%);
+    }
+    .survey-slide.slide-out-left {
+      transform: translateX(-110%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
     .survey-badge {
       background: rgba(255, 42, 122, 0.18);
       border: 1px solid rgba(255, 42, 122, 0.4);
@@ -207,110 +247,118 @@
       font-size: 26px;
       font-weight: 700;
       color: #ffffff;
-      margin: 12px 0 24px 0;
+      margin: 10px 0 22px 0;
       line-height: 1.3;
     }
     .survey-question.grand {
       font-family: 'Dancing Script', cursive;
-      font-size: 28px;
+      font-size: 27px;
       color: #FFD166;
+      line-height: 1.35;
     }
+
     .btn-yes {
-      background: #FF2A7A;
-      color: white;
-      border: none;
-      width: 100%;
-      padding: 14px;
-      border-radius: 24px;
-      font-size: 17px;
-      font-weight: 700;
-      cursor: pointer;
-      margin-bottom: 12px;
-      box-shadow: 0 6px 18px rgba(255, 42, 122, 0.4);
-    }
-    .btn-grand-yes {
       background: linear-gradient(90deg, #FF2A7A, #FF6584, #FFD166);
       color: white;
       border: none;
-      width: 100%;
-      padding: 18px;
-      border-radius: 30px;
-      font-size: 21px;
+      padding: 14px 28px;
+      border-radius: 25px;
+      font-size: 18px;
       font-weight: 800;
       cursor: pointer;
-      margin-bottom: 16px;
-      box-shadow: 0 8px 26px rgba(255, 42, 122, 0.6);
-      animation: pulseGrand 1.2s infinite alternate;
+      box-shadow: 0 6px 20px rgba(255, 42, 122, 0.45);
+      width: 90%;
+      margin: 8px auto;
+      display: block;
+      transition: transform 0.2s;
     }
-    @keyframes pulseGrand {
-      0% { transform: scale(1); }
-      100% { transform: scale(1.06); }
-    }
+    .btn-yes:active { transform: scale(0.96); }
+
     .btn-outline {
-      background: transparent;
-      border: 1px solid rgba(247, 186, 197, 0.5);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.35);
       color: #FFF0F3;
-      width: 100%;
-      padding: 12px;
-      border-radius: 24px;
-      font-size: 15px;
+      padding: 12px 24px;
+      border-radius: 25px;
+      font-size: 16px;
+      font-weight: 700;
       cursor: pointer;
+      width: 90%;
+      margin: 8px auto;
+      display: block;
+      transition: all 0.2s;
     }
+    .btn-outline:active { transform: scale(0.96); }
+
     .toast-msg {
+      position: absolute;
+      top: 12%;
       background: rgba(255, 42, 122, 0.95);
       color: white;
-      padding: 10px 18px;
-      border-radius: 16px;
+      padding: 10px 20px;
+      border-radius: 20px;
       font-size: 14px;
       font-weight: 700;
-      margin-bottom: 14px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+      z-index: 50;
       display: none;
+      animation: fadeInOut 2.6s forwards;
+    }
+    @keyframes fadeInOut {
+      0% { opacity: 0; transform: translateY(-10px); }
+      15% { opacity: 1; transform: translateY(0); }
+      85% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-10px); }
     }
 
-    /* Tunnel Screen */
+    /* Tunnel Overlay */
     .tunnel-msg {
       position: absolute;
-      bottom: 60px;
-      left: 0;
-      right: 0;
+      top: 24%;
       text-align: center;
       z-index: 10;
+      width: 100%;
+      padding: 0 20px;
     }
-    .tunnel-title {
+    .tunnel-msg h2 {
       font-family: 'Dancing Script', cursive;
-      font-size: 40px;
-      color: white;
-      margin-bottom: 6px;
+      font-size: 38px;
+      color: #ffffff;
+      text-shadow: 0 0 20px #FF2A7A;
     }
-    .tunnel-sub {
-      font-size: 16px;
-      color: #F7BAC5;
+    .tunnel-msg p {
+      font-family: 'Caveat', cursive;
+      font-size: 24px;
+      color: #FFD166;
+      margin-top: 8px;
     }
 
-    /* 3D Galaxy Top Banner */
-    .galaxy-top-banner {
+    /* Galaxy Header */
+    .galaxy-header {
       position: absolute;
       top: 14px;
       left: 14px;
       right: 14px;
-      background: rgba(30, 16, 53, 0.85);
-      border: 1px solid rgba(255, 42, 122, 0.4);
-      border-radius: 18px;
-      padding: 8px 14px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 10px;
       z-index: 20;
-      backdrop-filter: blur(8px);
     }
-    .galaxy-dedication {
+    .dedication-banner {
+      flex: 1;
+      background: rgba(30, 16, 53, 0.88);
+      border: 1px solid rgba(255, 42, 122, 0.65);
+      border-radius: 18px;
+      padding: 8px 14px;
       font-family: 'Dancing Script', cursive;
-      font-size: 16px;
+      font-size: 17px;
       font-weight: 700;
       color: #ffffff;
+      text-align: center;
       line-height: 1.25;
-      padding-right: 8px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+      backdrop-filter: blur(8px);
     }
 
     /* Floating zoom buttons */
@@ -337,15 +385,15 @@
       z-index: 20;
     }
     .pointer-badge {
-      background: rgba(30, 16, 53, 0.92);
+      background: rgba(30, 16, 53, 0.94);
       border: 1.2px solid rgba(255, 42, 122, 0.8);
       border-radius: 20px;
-      padding: 7px 16px;
+      padding: 7px 18px;
       font-family: 'Dancing Script', cursive;
       font-size: 20px;
       font-weight: 700;
       color: #ffffff;
-      box-shadow: 0 4px 16px rgba(255, 42, 122, 0.4);
+      box-shadow: 0 4px 16px rgba(255, 42, 122, 0.45);
       margin-bottom: 8px;
       animation: bouncePointer 0.7s infinite alternate ease-in-out;
       cursor: pointer;
@@ -357,7 +405,7 @@
     .cards-dock {
       width: 100%;
       background: rgba(30, 16, 53, 0.90);
-      border: 1px solid rgba(255, 42, 122, 0.4);
+      border: 1px solid rgba(255, 42, 122, 0.45);
       border-radius: 22px;
       padding: 10px 14px;
       display: flex;
@@ -412,25 +460,66 @@
       border-radius: 24px;
       max-width: 440px;
       width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      padding: 20px;
-      box-shadow: 0 10px 40px rgba(255, 42, 122, 0.4);
+      padding: 22px;
       position: relative;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    .polaroid-frame {
-      background: #FFF8F3;
-      border-radius: 16px;
-      padding: 10px;
-      margin: 14px 0;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    .letter-modal-header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .modal-title-text {
+      font-family: 'Dancing Script', cursive;
+      font-size: 26px;
+      font-weight: 700;
+      color: #FFD166;
+    }
+    .modal-tag {
+      font-size: 12px;
+      background: rgba(255, 42, 122, 0.25);
+      border: 1px solid rgba(255, 42, 122, 0.5);
+      padding: 4px 10px;
+      border-radius: 12px;
+      color: #F7BAC5;
+    }
+    .letter-photo-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 320px;
+      height: 230px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 2px solid rgba(255, 209, 102, 0.6);
+      margin-bottom: 14px;
       cursor: pointer;
     }
-    .polaroid-img {
+    .letter-photo-wrapper img {
       width: 100%;
-      height: 250px;
+      height: 100%;
       object-fit: cover;
-      border-radius: 12px;
+    }
+    .letter-photo-hint {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(0, 0, 0, 0.65);
+      color: #FFD166;
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 10px;
+    }
+    .letter-phrase {
+      font-family: 'Dancing Script', cursive;
+      font-size: 21px;
+      color: #FF6584;
+      margin-bottom: 10px;
+      text-align: center;
     }
     .letter-msg-box {
       background: rgba(0,0,0,0.4);
@@ -480,9 +569,12 @@
 
     <div class="content-overlay">
       <div class="card-glass">
-        <!-- Imgur GIF -->
+        <!-- Smooth video loop with GIF fallback so it never freezes on mobile -->
         <div class="gif-container">
-          <img src="assets/welcome_gif.gif" alt="Bienvenida Hill">
+          <video id="welcome-media" autoplay loop muted playsinline webkit-playsinline poster="assets/welcome_gif.gif">
+            <source src="assets/welcome_video.mp4" type="video/mp4">
+            <img src="assets/welcome_gif.gif" alt="Para ti Hill">
+          </video>
         </div>
 
         <h1 class="card-title">Bienvenida Hill</h1>
@@ -498,6 +590,8 @@
 
   <!-- ==================== SCREEN 2: SURVEY ==================== -->
   <div id="screen-survey" class="screen">
+    <canvas id="survey-canvas"></canvas>
+
     <div class="content-overlay">
       <div class="step-dots">
         <div id="dot-1" class="dot active"></div>
@@ -507,35 +601,35 @@
 
       <div id="toast" class="toast-msg"></div>
 
-      <!-- Step 1 -->
-      <div id="survey-step-1" class="card-glass">
-        <span class="survey-badge">Pregunta 1 de 3 💘</span>
-        <div style="font-size: 40px; margin-bottom: 6px;">🫣</div>
-        <div class="survey-question">¿Estás preparada para la pregunta que te haré?</div>
-        <button id="q1-yes" class="btn-yes">¡Sí, estoy lista! 💘</button>
-        <button id="q1-no" class="btn-outline">No... todavía no 🙈</button>
-      </div>
-
-      <!-- Step 2 -->
-      <div id="survey-step-2" class="card-glass" style="display: none;">
-        <span class="survey-badge">Pregunta 2 de 3 💘</span>
-        <div style="font-size: 40px; margin-bottom: 6px;">👀</div>
-        <div class="survey-question">¿Segura segurísima??</div>
-        <button id="q2-yes" class="btn-yes">¡Sip, 100% segurísima! 💘</button>
-        <button id="q2-no" class="btn-outline">Mmm... déjame pensarlo 🤔</button>
-      </div>
-
-      <!-- Step 3 (Proposal) -->
-      <div id="survey-step-3" class="card-glass" style="display: none;">
-        <span class="survey-badge">✨ El Momento Especial 💘</span>
-        <div style="font-size: 44px; margin-bottom: 6px;">💍</div>
-        <div class="survey-question grand">
-          ¿Quieres ser mi novia y la persona que se quede a mi lado durante todo el tiempo que Dios decida y que sea eterno?
+      <div class="survey-viewport">
+        <!-- Step 1 -->
+        <div id="survey-step-1" class="card-glass survey-slide active">
+          <span class="survey-badge">Pregunta 1 de 3 💘</span>
+          <div style="font-size: 40px; margin-bottom: 6px;">🫣</div>
+          <div class="survey-question">¿Estás preparada para la pregunta que te haré?</div>
+          <button id="q1-yes" class="btn-yes">¡Sí, estoy lista! 💘</button>
+          <button id="q1-no" class="btn-outline">No... todavía no 🙈</button>
         </div>
-        <button id="q3-yes" class="btn-grand-yes">¡¡SÍ, ACEPTO!! 💘💍</button>
-        <div style="display: flex; gap: 10px; width: 100%;">
-          <button id="q3-maybe" class="btn-outline" style="flex: 1;">Tal vez... 🤭</button>
-          <button id="q3-no" class="btn-outline" style="flex: 1; transition: transform 0.2s;">No 🙈</button>
+
+        <!-- Step 2 -->
+        <div id="survey-step-2" class="card-glass survey-slide">
+          <span class="survey-badge">Pregunta 2 de 3 💘</span>
+          <div style="font-size: 40px; margin-bottom: 6px;">👀</div>
+          <div class="survey-question">¿Segura segurísima??</div>
+          <button id="q2-yes" class="btn-yes">¡Sip, 100% segurísima! 💘</button>
+          <button id="q2-no" class="btn-outline">Mmm... déjame pensarlo 🤔</button>
+        </div>
+
+        <!-- Step 3 (Grand Proposal) -->
+        <div id="survey-step-3" class="card-glass survey-slide">
+          <span class="survey-badge">✨ El Momento Especial 💘</span>
+          <div style="font-size: 44px; margin-bottom: 6px;">💍</div>
+          <div class="survey-question grand">
+            ¿Quieres ser mi novia y la persona que se quede a mi lado durante todo el tiempo que Dios decida y que sea eterno?
+          </div>
+          <button id="q3-yes" class="btn-yes">¡¡SÍ, ACEPTO!! 💘💍</button>
+          <button id="q3-maybe" class="btn-outline">Tal vez... 😉</button>
+          <button id="q3-no" class="btn-outline" style="position: relative;">No 🙈</button>
         </div>
       </div>
     </div>
@@ -545,8 +639,8 @@
   <div id="screen-tunnel" class="screen">
     <canvas id="tunnel-canvas"></canvas>
     <div class="tunnel-msg">
-      <div class="tunnel-title">¡Dijiste que SÍ! 💘</div>
-      <div class="tunnel-sub">Viajando a nuestra galaxia... ✨</div>
+      <h2>¡Dijo que Sí! 💘</h2>
+      <p>Viajando a nuestra galaxia eterna...</p>
     </div>
   </div>
 
@@ -554,25 +648,27 @@
   <div id="screen-galaxy" class="screen">
     <canvas id="galaxy-canvas"></canvas>
 
-    <!-- Top Banner with Dedication -->
-    <div class="galaxy-top-banner">
-      <div class="galaxy-dedication">
+    <div class="galaxy-header">
+      <div class="dedication-banner">
         Para ti Hillary, amor que me enamora cada dia mas, Te amo un monton
       </div>
-      <div id="galaxy-music-btn" class="icon-btn" style="flex-shrink: 0;">🎵</div>
+      <div id="galaxy-music-btn" class="icon-btn">🎵</div>
     </div>
 
     <!-- Zoom Controls -->
     <div class="zoom-controls">
-      <button id="btn-zoom-in" class="icon-btn" style="font-size: 20px;">+</button>
-      <button id="btn-zoom-out" class="icon-btn" style="font-size: 20px;">−</button>
-      <button id="btn-zoom-reset" class="icon-btn" style="font-size: 16px;">↺</button>
+      <div id="btn-zoom-in" class="icon-btn" title="Acercar">＋</div>
+      <div id="btn-zoom-out" class="icon-btn" title="Alejar">－</div>
+      <div id="btn-zoom-reset" class="icon-btn" title="Reiniciar">↺</div>
     </div>
 
-    <!-- Bottom Section: Pointer & Dock of 6 Letters -->
+    <!-- Bottom Section: Animated indicator and Cards Dock -->
     <div class="bottom-section">
-      <div class="pointer-badge">Mira tus cartas mi pulga 👇</div>
-      <div class="cards-dock">
+      <div class="pointer-badge" onclick="scrollCards()">
+        Mira tus cartas mi pulga 👇
+      </div>
+
+      <div class="cards-dock" id="cards-dock">
         <button class="card-dock-btn" onclick="openLetter(1)">Carta 1 💘</button>
         <button class="card-dock-btn" onclick="openLetter(2)">Carta 2 💘</button>
         <button class="card-dock-btn" onclick="openLetter(3)">Carta 3 💘</button>
@@ -583,37 +679,30 @@
     </div>
   </div>
 
-  <!-- ==================== LETTER MODAL ==================== -->
+  <!-- Modal for Letter Content -->
   <div id="letter-modal" class="modal-overlay" onclick="closeLetter()">
     <div class="letter-modal" onclick="event.stopPropagation()">
       <button class="close-modal-btn" onclick="closeLetter()">✕</button>
-      <div style="display: flex; align-items: center; gap: 8px;">
-        <span style="font-size: 24px;">💘</span>
-        <div>
-          <h2 id="modal-title" style="font-family: 'Dancing Script', cursive; font-size: 28px; color: white;">Carta 1 💘</h2>
-          <div id="modal-date" style="font-size: 12px; color: #F7BAC5;">Nuestro comienzo</div>
-        </div>
+      <div class="letter-modal-header">
+        <span id="modal-title" class="modal-title-text">Carta 1 💘</span>
+        <span id="modal-date" class="modal-tag">Nuestro comienzo</span>
       </div>
 
-      <div class="polaroid-frame" onclick="openPhotoZoom()">
-        <img id="modal-photo" class="polaroid-img" src="assets/photo_1.jpg" alt="Foto con Hillary">
-        <div id="modal-phrase" style="text-align: center; margin-top: 8px; font-family: 'Dancing Script', cursive; font-size: 16px; color: #6B4559; font-weight: bold;">
-          ✨ Para mi amor eterno 💘 ✨
-        </div>
+      <div class="letter-photo-wrapper" onclick="openPhotoZoom()">
+        <img id="modal-photo" src="" alt="Foto con Hillary">
+        <span class="letter-photo-hint">🔍 Toca para ampliar</span>
       </div>
 
-      <div class="letter-msg-box">
-        “ <span id="modal-msg">Te amo hillary, con todo mi alma</span> ”
-        <div style="font-family: 'Dancing Script', cursive; font-size: 18px; color: #FFD166; margin-top: 10px;">
-          Siempre juntos 💘
-        </div>
+      <div id="modal-phrase" class="letter-phrase">✨ Desde el fondo de mi corazón 💘 ✨</div>
+
+      <div id="modal-msg" class="letter-msg-box">
+        Te amo hillary, con todo mi alma
       </div>
     </div>
   </div>
 
-  <!-- JavaScript Logic -->
   <script>
-    // Letters Data
+    // 6 Love Letters Data
     const lettersData = [
       { id: 1, title: "Carta 1 💘", dateTag: "Nuestro comienzo", phrase: "Desde el fondo de mi corazón 💘", message: "Te amo hillary, con todo mi alma", photo: "assets/photo_1.jpg" },
       { id: 2, title: "Carta 2 💘", dateTag: "Agradecido con la vida", phrase: "El regalo más hermoso del cielo 💘", message: "Eres lo mejor que me pudo pasar en este mundo y estoy agradecido contigo", photo: "assets/photo_2.jpg" },
@@ -626,13 +715,30 @@
     // Audio Elements
     const audioVoice = document.getElementById('audio-voice');
     const audioSong = document.getElementById('audio-song');
-    let isVoiceMuted = false;
-    let isSongMuted = false;
+    const welcomeVid = document.getElementById('welcome-media');
 
-    // Autoplay voice on first user interaction or load
+    function playMedia() {
+      if (welcomeVid) {
+        welcomeVid.play().catch(() => {});
+      }
+      if (audioVoice) {
+        audioVoice.play().then(() => {
+          document.getElementById('voice-icon').innerText = '🎙️';
+          document.getElementById('voice-text').innerText = 'Voz IA: Hablando';
+        }).catch(() => {
+          document.getElementById('voice-icon').innerText = '🔊';
+          document.getElementById('voice-text').innerText = 'Escuchar Voz IA';
+        });
+      }
+    }
+
     window.addEventListener('DOMContentLoaded', () => {
-      audioVoice.play().catch(() => {});
+      playMedia();
+      initAmbientCanvas();
     });
+
+    document.addEventListener('touchstart', playMedia, { once: true });
+    document.addEventListener('click', playMedia, { once: true });
 
     document.getElementById('voice-toggle-btn').addEventListener('click', () => {
       if (audioVoice.paused) {
@@ -652,7 +758,7 @@
       document.getElementById('voice-text').innerText = 'Escuchar Voz IA';
     });
 
-    // Song Loop Enforcement (2:23 to 3:00)
+    // Song Loop (strictly 2:23 to 3:00)
     audioSong.addEventListener('timeupdate', () => {
       if (audioSong.currentTime >= 180) {
         audioSong.currentTime = 143.5;
@@ -684,9 +790,10 @@
     document.getElementById('btn-enter').addEventListener('click', () => {
       audioVoice.pause();
       showScreen('screen-survey');
+      initSurveyCanvas();
     });
 
-    // Survey Logic
+    // Survey Logic with Smooth Slide Animations
     function showToast(msg) {
       const t = document.getElementById('toast');
       t.innerText = msg;
@@ -694,33 +801,43 @@
       setTimeout(() => { t.style.display = 'none'; }, 2600);
     }
 
+    // Step 1 -> Step 2
     document.getElementById('q1-yes').addEventListener('click', () => {
-      document.getElementById('survey-step-1').style.display = 'none';
-      document.getElementById('survey-step-2').style.display = 'block';
+      const s1 = document.getElementById('survey-step-1');
+      const s2 = document.getElementById('survey-step-2');
+      s1.classList.remove('active');
+      s1.classList.add('slide-out-left');
+      s2.classList.add('active');
       document.getElementById('dot-2').classList.add('active');
     });
     document.getElementById('q1-no').addEventListener('click', () => {
       showToast('¡Oye Hill! Tienes que prepararte ya mismo jajaja 💘 ¡Vamos, dale a Sí!');
     });
 
+    // Step 2 -> Step 3
     document.getElementById('q2-yes').addEventListener('click', () => {
-      document.getElementById('survey-step-2').style.display = 'none';
-      document.getElementById('survey-step-3').style.display = 'block';
+      const s2 = document.getElementById('survey-step-2');
+      const s3 = document.getElementById('survey-step-3');
+      s2.classList.remove('active');
+      s2.classList.add('slide-out-left');
+      s3.classList.add('active');
       document.getElementById('dot-3').classList.add('active');
     });
     document.getElementById('q2-no').addEventListener('click', () => {
       showToast('¡No puedes dudar con esto tan lindo! 😉💘 ¡Tú sabes que estás segurísima!');
     });
 
-    let noClickCount = 0;
+    // Playful Dodge on Step 3 "No" button
     const dodgeBtn = document.getElementById('q3-no');
-    dodgeBtn.addEventListener('click', () => {
-      noClickCount++;
+    function dodgeAction(e) {
+      if (e) e.preventDefault();
       const randX = (Math.random() - 0.5) * 160;
       const randY = (Math.random() - 0.5) * 80;
       dodgeBtn.style.transform = `translate(${randX}px, ${randY}px)`;
       showToast('¡Esa opción no es válida para nosotros! 🤭💘 ¡Tu destino es el SÍ!');
-    });
+    }
+    dodgeBtn.addEventListener('click', dodgeAction);
+    dodgeBtn.addEventListener('touchstart', dodgeAction);
 
     document.getElementById('q3-maybe').addEventListener('click', () => {
       showToast("¡'Tal vez' significa que te mueres de ganas de decir que SÍ! 💘💍");
@@ -732,9 +849,112 @@
       startTunnelAnimation();
     });
 
+    // ==================== AMBIENT & SURVEY HEARTS CANVAS ====================
+    function initAmbientCanvas() {
+      const canvas = document.getElementById('ambient-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const hearts = [];
+      const colors = ['#FF2A7A', '#FF6584', '#F7BAC5', '#FFD166'];
+      for (let i = 0; i < 28; i++) {
+        hearts.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          speed: 0.5 + Math.random() * 0.9,
+          size: 14 + Math.random() * 18,
+          alpha: 0.25 + Math.random() * 0.45,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          swing: Math.random() * 2
+        });
+      }
+
+      function drawHeart(ctx, x, y, size, color, alpha) {
+        const s = size / 2;
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.fillStyle = color;
+        ctx.globalAlpha = alpha;
+        ctx.beginPath();
+        ctx.moveTo(0, s * 0.6);
+        ctx.bezierCurveTo(-s * 1.3, -s * 0.4, -s * 0.9, -s * 1.2, 0, -s * 0.4);
+        ctx.bezierCurveTo(s * 0.9, -s * 1.2, s * 1.3, -s * 0.4, 0, s * 0.6);
+        ctx.fill();
+
+        ctx.strokeStyle = '#FFD166';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(-s * 1.2, s * 0.9);
+        ctx.lineTo(s * 1.3, -s * 1.0);
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      function render() {
+        ctx.fillStyle = '#090314';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        hearts.forEach(h => {
+          h.y -= h.speed;
+          h.swing += 0.02;
+          const currentX = h.x + Math.sin(h.swing) * 20;
+          if (h.y < -30) {
+            h.y = canvas.height + 30;
+            h.x = Math.random() * canvas.width;
+          }
+          drawHeart(ctx, currentX, h.y, h.size, h.color, h.alpha);
+        });
+
+        requestAnimationFrame(render);
+      }
+      render();
+    }
+
+    let surveyCanvasStarted = false;
+    function initSurveyCanvas() {
+      if (surveyCanvasStarted) return;
+      surveyCanvasStarted = true;
+      const canvas = document.getElementById('survey-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const particles = [];
+      for (let i = 0; i < 40; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          speed: 0.3 + Math.random() * 0.6,
+          radius: 1.2 + Math.random() * 2.5,
+          color: ['#FF2A7A', '#FFD166', '#FFFFFF'][Math.floor(Math.random() * 3)],
+          alpha: 0.3 + Math.random() * 0.5
+        });
+      }
+
+      function renderSurvey() {
+        ctx.fillStyle = '#090314';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        particles.forEach(p => {
+          p.y -= p.speed;
+          if (p.y < -10) p.y = canvas.height + 10;
+          ctx.fillStyle = p.color;
+          ctx.globalAlpha = p.alpha;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fill();
+        });
+
+        requestAnimationFrame(renderSurvey);
+      }
+      renderSurvey();
+    }
+
     // ==================== TUNNEL & AUDIO RAMP ====================
     function startTunnelAnimation() {
-      // Start song at 2:23 softly
       audioSong.currentTime = 143.5;
       audioSong.volume = 0.15;
       audioSong.play().catch(() => {});
@@ -759,7 +979,6 @@
       runTunnelCanvas();
     }
 
-    // Tunnel Canvas Drawing
     function runTunnelCanvas() {
       const canvas = document.getElementById('tunnel-canvas');
       const ctx = canvas.getContext('2d');
@@ -767,7 +986,7 @@
       canvas.height = window.innerHeight;
 
       const stars = [];
-      for (let i = 0; i < 160; i++) {
+      for (let i = 0; i < 180; i++) {
         stars.push({
           angle: Math.random() * Math.PI * 2,
           dist: Math.random(),
@@ -819,15 +1038,16 @@
     let isDragging = false;
     let lastX = 0, lastY = 0;
 
+    // Widely Spaced Words on the Outer Spiral Arms
     const floatingWords = [
-      { text: "Eres mi paz", emoji: "🕊️", r: 320, a: 0.2 },
-      { text: "Mi universo", emoji: "🌌", r: 380, a: 1.0 },
-      { text: "Te amo", emoji: "💖", r: 420, a: 1.8 },
-      { text: "Siempre a tu lado", emoji: "💍", r: 350, a: 2.6 },
-      { text: "Mi mayor suerte", emoji: "🍀", r: 460, a: 3.4 },
-      { text: "Mi razón de ser", emoji: "✨", r: 390, a: 4.2 },
-      { text: "Contigo por siempre", emoji: "♾️", r: 450, a: 5.0 },
-      { text: "Mi cielo", emoji: "🌟", r: 340, a: 5.8 }
+      { text: "Eres mi paz", emoji: "🕊️", r: 350, a: 0.2 },
+      { text: "Mi universo", emoji: "🌌", r: 440, a: 1.0 },
+      { text: "Te amo", emoji: "💘", r: 400, a: 1.8 },
+      { text: "Siempre a tu lado", emoji: "💍", r: 480, a: 2.6 },
+      { text: "Mi mayor suerte", emoji: "🍀", r: 370, a: 3.4 },
+      { text: "Mi razón de ser", emoji: "✨", r: 450, a: 4.2 },
+      { text: "Contigo por siempre", emoji: "♾️", r: 420, a: 5.0 },
+      { text: "Mi cielo", emoji: "🌟", r: 490, a: 5.8 }
     ];
 
     function initGalaxy3D() {
@@ -837,57 +1057,94 @@
       const canvas = document.getElementById('galaxy-canvas');
       const ctx = canvas.getContext('2d');
 
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
       function resize() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        canvas.width = Math.floor(window.innerWidth * dpr);
+        canvas.height = Math.floor(window.innerHeight * dpr);
+        canvas.style.width = window.innerWidth + 'px';
+        canvas.style.height = window.innerHeight + 'px';
       }
       window.addEventListener('resize', resize);
       resize();
 
-      // Generate Galaxy Stars (Heart + 3 Spiral Arms)
       const stars = [];
 
-      // 1. Big Center Heart (approx 450 stars)
-      for (let i = 0; i < 450; i++) {
+      // 1. BIG Central 3D Heart (approx 650 stars) - Prominent, beautiful heart silhouette
+      const heartStarsCount = 650;
+      for (let i = 0; i < heartStarsCount; i++) {
         const t = Math.random() * Math.PI * 2;
         const sinT = Math.sin(t);
         const hx = 16 * sinT * sinT * sinT;
         const hy = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
-        const scale = 7.5 + Math.random() * 1.2;
-        const thickness = Math.max(8, 36 * (1 - Math.abs(hy)/20));
+        const scale = 7.8 + Math.random() * 1.5;
+        const thickness = Math.max(10, 38 * (1 - Math.abs(hy)/20));
         const hz = (Math.random() - 0.5) * 2 * thickness;
 
         stars.push({
-          x: hx * scale + (Math.random() - 0.5) * 8,
-          y: hy * scale + (Math.random() - 0.5) * 8,
+          x: hx * scale + (Math.random() - 0.5) * 6,
+          y: hy * scale + (Math.random() - 0.5) * 6,
           z: hz,
-          size: 2.2 + Math.random() * 2.5,
-          color: Math.random() > 0.3 ? '#FF2A7A' : '#FFD166',
-          isCore: true
+          baseSize: 2.8 + Math.random() * 2.5,
+          color: Math.random() > 0.25 ? '#FF2A7A' : '#FFD166',
+          isCore: true,
+          twinkle: Math.random() * Math.PI * 2
         });
       }
 
-      // 2. Big Arrow through the Heart (approx 90 stars)
-      for (let i = 0; i < 90; i++) {
-        const f = i / 90;
+      // 2. BIG Central Star Arrow piercing through the heart (approx 180 stars)
+      // Shaft
+      for (let i = 0; i <= 100; i++) {
+        const f = i / 100;
         stars.push({
-          x: -160 + f * 340 + (Math.random() - 0.5) * 5,
-          y: 135 - f * 285 + (Math.random() - 0.5) * 5,
-          z: -45 + f * 90 + (Math.random() - 0.5) * 5,
-          size: 2.8 + Math.random() * 2.2,
+          x: -180 + f * 370 + (Math.random() - 0.5) * 5,
+          y: 150 - f * 315 + (Math.random() - 0.5) * 5,
+          z: -50 + f * 100 + (Math.random() - 0.5) * 5,
+          baseSize: 3.5 + Math.random() * 2.2,
           color: '#FFFFFF',
-          isCore: true
+          isCore: true,
+          isArrow: true,
+          twinkle: Math.random() * Math.PI * 2
         });
       }
 
-      // 3. Wide Expansive Spiral Arms (3 arms, approx 1600 stars)
-      const armColors = ['#FFB6C1', '#FF69B4', '#FFD700', '#FFFFFF', '#E2B6FF', '#8AE8FF'];
+      // Arrowhead cluster
+      for (let i = 0; i < 45; i++) {
+        const spread = Math.random() * 35;
+        stars.push({
+          x: 190 - spread + (Math.random() - 0.5) * 12,
+          y: -165 + spread + (Math.random() - 0.5) * 12,
+          z: 50 + (Math.random() - 0.5) * 12,
+          baseSize: 3.6 + Math.random() * 2.4,
+          color: '#FFFFFF',
+          isCore: true,
+          isArrow: true,
+          twinkle: Math.random() * Math.PI * 2
+        });
+      }
+
+      // Arrow feathers cluster
+      for (let i = 0; i < 40; i++) {
+        const spread = Math.random() * 32;
+        stars.push({
+          x: -180 + spread + (Math.random() - 0.5) * 12,
+          y: 150 - spread + (Math.random() - 0.5) * 12,
+          z: -50 + (Math.random() - 0.5) * 12,
+          baseSize: 2.8 + Math.random() * 2.2,
+          color: '#FFD166',
+          isCore: true,
+          isArrow: true,
+          twinkle: Math.random() * Math.PI * 2
+        });
+      }
+
+      // 3. Wide Expansive Spiral Arms (3 arms, 1800 stars)
+      const armColors = ['#FFB6C1', '#FF69B4', '#FFD700', '#FFFFFF', '#E2B6FF', '#7DF9FF'];
       const numArms = 3;
       for (let arm = 0; arm < numArms; arm++) {
         const armPhase = arm * (2 * Math.PI / numArms);
-        for (let i = 0; i < 520; i++) {
+        for (let i = 0; i < 600; i++) {
           const f = Math.random();
-          const r = 180 + f * 420;
+          const r = 185 + f * 460;
           const theta = armPhase + (2.1 * Math.log(r / 110));
           const armWidth = 16 + f * 42;
           const perp = theta + Math.PI / 2;
@@ -901,13 +1158,31 @@
             x: px,
             y: py,
             z: pz,
-            size: 1.0 + Math.random() * 2.0,
-            color: armColors[Math.floor(Math.random() * armColors.length)]
+            baseSize: 1.5 + Math.random() * 2.4,
+            color: armColors[Math.floor(Math.random() * armColors.length)],
+            isCore: false,
+            twinkle: Math.random() * Math.PI * 2
           });
         }
       }
 
-      // Touch & Mouse Drag Controls
+      // Ambient halo stars
+      for (let i = 0; i < 180; i++) {
+        const r = 260 + Math.random() * 460;
+        const theta = Math.random() * Math.PI * 2;
+        const phi = (Math.random() - 0.5) * (Math.PI * 0.7);
+        stars.push({
+          x: r * Math.cos(phi) * Math.cos(theta),
+          y: r * Math.sin(phi),
+          z: r * Math.cos(phi) * Math.sin(theta),
+          baseSize: 1.0 + Math.random() * 1.8,
+          color: '#FFFFFF',
+          isCore: false,
+          twinkle: Math.random() * Math.PI * 2
+        });
+      }
+
+      // Touch / Drag & Pinch Zoom Controls
       canvas.addEventListener('mousedown', (e) => {
         isDragging = true;
         lastX = e.clientX;
@@ -924,7 +1199,6 @@
         lastY = e.clientY;
       });
 
-      // Mobile Touch Handling
       let initialPinchDist = null;
       canvas.addEventListener('touchstart', (e) => {
         if (e.touches.length === 1) {
@@ -964,12 +1238,10 @@
         initialPinchDist = null;
       });
 
-      // Mouse Wheel Zoom
       canvas.addEventListener('wheel', (e) => {
         zoomScale = Math.max(0.45, Math.min(2.8, zoomScale - e.deltaY * 0.001));
       });
 
-      // Zoom Buttons
       document.getElementById('btn-zoom-in').addEventListener('click', () => {
         zoomScale = Math.min(2.8, zoomScale + 0.25);
       });
@@ -982,7 +1254,6 @@
         zoomScale = 1.0;
       });
 
-      // 3D Projection Math
       const cameraDist = 720;
       function project(x, y, z, cx, cy) {
         const cosY = Math.cos(rotY);
@@ -995,35 +1266,42 @@
         const y1 = y * cosX - z1 * sinX;
         const z2 = y * sinX + z1 * cosX;
 
-        const scale = ((cameraDist / (cameraDist + z2)) * zoomScale);
+        const denom = Math.max(80, cameraDist + z2);
+        const scale = Math.max(0.25, Math.min(3.5, (cameraDist / denom) * zoomScale));
         return {
           x: cx + x1 * scale,
           y: cy + y1 * scale,
-          scale: Math.max(0.2, Math.min(3.8, scale)),
+          scale: scale,
           z: z2
         };
       }
 
-      // Render Loop
+      let time = 0;
       function render() {
         if (!isDragging) {
-          rotY += 0.0025; // Gentle galaxy auto-rotation
+          rotY += 0.0025; // Gentle galaxy auto-spin
         }
+        time += 0.03;
 
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         ctx.fillStyle = '#090314';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillRect(0, 0, w, h);
 
-        const cx = canvas.width / 2;
-        const cy = canvas.height / 2 - 30;
+        const cx = w / 2;
+        const cy = h / 2 - 30;
 
-        // Core Nebula Glow
-        const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.max(80, 190 * zoomScale));
+        // Core Heart Nebula Glow
+        const glowRadius = Math.max(90, 210 * zoomScale);
+        const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, glowRadius);
         grad.addColorStop(0, 'rgba(255, 42, 122, 0.45)');
         grad.addColorStop(0.5, 'rgba(255, 101, 132, 0.22)');
         grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
         ctx.fillStyle = grad;
         ctx.beginPath();
-        ctx.arc(cx, cy, Math.max(80, 190 * zoomScale), 0, Math.PI * 2);
+        ctx.arc(cx, cy, glowRadius, 0, Math.PI * 2);
         ctx.fill();
 
         // Project and depth-sort stars
@@ -1032,18 +1310,36 @@
           return { s, p };
         }).sort((a, b) => b.p.z - a.p.z);
 
-        // Draw stars
+        // Render Stars
         projected.forEach(({ s, p }) => {
-          if (p.z < -600) return;
-          const alpha = Math.max(0.25, Math.min(1, (p.z + 500) / 1000));
+          const depthAlpha = Math.max(0.4, Math.min(1.0, 1.0 - (p.z / 1400)));
+          const twinkle = 0.65 + 0.35 * Math.sin(time + s.twinkle);
+          const alpha = depthAlpha * twinkle;
+
           ctx.fillStyle = s.color;
           ctx.globalAlpha = alpha;
+          const base = (s.baseSize !== undefined && !isNaN(s.baseSize)) ? s.baseSize : 2.0;
+          const r = Math.max(1.2, base * p.scale);
+
           ctx.beginPath();
-          ctx.arc(p.x, p.y, Math.max(0.8, s.baseSize * p.scale), 0, Math.PI * 2);
+          ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
           ctx.fill();
+
+          if (s.isArrow && p.scale > 0.8) {
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.55)';
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, r * 1.8, 0, Math.PI * 2);
+            ctx.fill();
+          } else if (s.isCore && p.scale > 1.0) {
+            ctx.fillStyle = s.color;
+            ctx.globalAlpha = alpha * 0.35;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, r * 1.5, 0, Math.PI * 2);
+            ctx.fill();
+          }
         });
 
-        // Draw Clean Floating Words (spaced out across outer spiral)
+        // Render Clean, Spaced-Out Words with Emojis
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.font = 'bold 18px "Caveat", cursive';
@@ -1053,15 +1349,13 @@
           const wz = w.r * Math.sin(w.a);
           const p = project(wx, 0, wz, cx, cy);
 
-          if (p.z > -500) {
-            const alpha = Math.max(0.3, Math.min(0.95, (p.z + 450) / 900));
-            ctx.globalAlpha = alpha;
-            ctx.shadowColor = 'rgba(255, 42, 122, 0.8)';
-            ctx.shadowBlur = 8;
-            ctx.fillStyle = '#FFF0F3';
-            ctx.fillText(`${w.text} ${w.emoji}`, p.x, p.y);
-            ctx.shadowBlur = 0;
-          }
+          const depthAlpha = Math.max(0.4, Math.min(1.0, 1.0 - (p.z / 1400)));
+          ctx.globalAlpha = depthAlpha;
+          ctx.shadowColor = 'rgba(255, 42, 122, 0.9)';
+          ctx.shadowBlur = 10;
+          ctx.fillStyle = '#FFF0F3';
+          ctx.fillText(`${w.text} ${w.emoji}`, p.x, p.y);
+          ctx.shadowBlur = 0;
         });
 
         ctx.globalAlpha = 1.0;
@@ -1091,6 +1385,13 @@
     function openPhotoZoom() {
       const src = document.getElementById('modal-photo').src;
       window.open(src, '_blank');
+    }
+
+    function scrollCards() {
+      const dock = document.getElementById('cards-dock');
+      if (dock) {
+        dock.scrollBy({ left: 160, behavior: 'smooth' });
+      }
     }
   </script>
 </body>
