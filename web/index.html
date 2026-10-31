@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Para Hillary 💘</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +19,7 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
-      background-color: #090314;
+      background-color: #06020c;
       font-family: 'Nunito', sans-serif;
       color: #ffffff;
     }
@@ -39,7 +39,7 @@
       opacity: 1;
     }
 
-    #ambient-canvas, #tunnel-canvas, #galaxy-canvas, #survey-canvas {
+    #ambient-canvas, #survey-canvas, #tunnel-canvas, #galaxy-canvas {
       position: absolute;
       top: 0;
       left: 0;
@@ -79,7 +79,6 @@
       font-size: 13px;
       font-weight: 700;
       color: #FFD166;
-      cursor: pointer;
       display: flex;
       align-items: center;
       gap: 6px;
@@ -87,18 +86,23 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     }
     .icon-btn {
-      width: 40px;
-      height: 40px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
-      background: rgba(30, 16, 53, 0.88);
-      border: 1px solid rgba(247, 186, 197, 0.5);
+      background: rgba(30, 16, 53, 0.90);
+      border: 1.2px solid rgba(247, 186, 197, 0.6);
       color: #FFD166;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       backdrop-filter: blur(8px);
-      font-size: 18px;
+      font-size: 19px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.45);
+      transition: transform 0.2s;
+    }
+    .icon-btn:active {
+      transform: scale(0.92);
     }
 
     /* Cards */
@@ -107,20 +111,20 @@
       border: 1.5px solid rgba(255, 42, 122, 0.65);
       box-shadow: 0 10px 32px rgba(255, 42, 122, 0.35);
       border-radius: 28px;
-      padding: 22px 18px;
+      padding: 24px 20px;
       max-width: 440px;
       width: 100%;
       text-align: center;
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(14px);
     }
     .gif-container {
-      width: 180px;
-      height: 140px;
-      margin: 0 auto 12px auto;
+      width: 185px;
+      height: 145px;
+      margin: 0 auto 14px auto;
       border-radius: 18px;
       overflow: hidden;
       border: 1.5px solid rgba(255, 209, 102, 0.6);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.5);
       background: #000;
       display: flex;
       align-items: center;
@@ -134,27 +138,18 @@
     }
     .card-title {
       font-family: 'Dancing Script', cursive;
-      font-size: 38px;
+      font-size: 40px;
       font-weight: 700;
       color: #ffffff;
       margin-bottom: 8px;
+      text-shadow: 0 2px 10px rgba(255, 42, 122, 0.6);
     }
     .card-text {
       font-family: 'Caveat', cursive;
-      font-size: 23px;
+      font-size: 24px;
       line-height: 1.35;
       color: #FFF0F3;
-      margin-bottom: 14px;
-    }
-    .voice-badge {
-      display: inline-block;
-      padding: 4px 12px;
-      border-radius: 14px;
-      font-size: 12px;
-      color: #FFD166;
-      border: 1px solid rgba(255, 42, 122, 0.4);
-      background: rgba(255, 42, 122, 0.15);
-      margin-bottom: 6px;
+      margin-bottom: 16px;
     }
 
     /* Primary Action Buttons */
@@ -162,14 +157,14 @@
       background: linear-gradient(90deg, #FF2A7A, #FF6584, #FFD166);
       color: white;
       border: none;
-      padding: 16px 36px;
+      padding: 16px 38px;
       border-radius: 30px;
-      font-size: 20px;
+      font-size: 21px;
       font-weight: 800;
       cursor: pointer;
-      box-shadow: 0 8px 24px rgba(255, 42, 122, 0.5);
+      box-shadow: 0 8px 26px rgba(255, 42, 122, 0.55);
       transition: transform 0.2s, box-shadow 0.2s;
-      margin-top: 20px;
+      margin-top: 22px;
       max-width: 340px;
       width: 85%;
     }
@@ -244,7 +239,7 @@
     }
     .survey-question {
       font-family: 'Caveat', cursive;
-      font-size: 26px;
+      font-size: 27px;
       font-weight: 700;
       color: #ffffff;
       margin: 10px 0 22px 0;
@@ -252,18 +247,19 @@
     }
     .survey-question.grand {
       font-family: 'Dancing Script', cursive;
-      font-size: 27px;
+      font-size: 28px;
       color: #FFD166;
       line-height: 1.35;
+      text-shadow: 0 2px 12px rgba(255, 209, 102, 0.4);
     }
 
     .btn-yes {
       background: linear-gradient(90deg, #FF2A7A, #FF6584, #FFD166);
       color: white;
       border: none;
-      padding: 14px 28px;
+      padding: 15px 28px;
       border-radius: 25px;
-      font-size: 18px;
+      font-size: 19px;
       font-weight: 800;
       cursor: pointer;
       box-shadow: 0 6px 20px rgba(255, 42, 122, 0.45);
@@ -278,9 +274,9 @@
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.35);
       color: #FFF0F3;
-      padding: 12px 24px;
+      padding: 13px 24px;
       border-radius: 25px;
-      font-size: 16px;
+      font-size: 17px;
       font-weight: 700;
       cursor: pointer;
       width: 90%;
@@ -311,10 +307,10 @@
       100% { opacity: 0; transform: translateY(-10px); }
     }
 
-    /* Tunnel Overlay */
+    /* Tunnel Overlay with Radiant Glow */
     .tunnel-msg {
       position: absolute;
-      top: 24%;
+      top: 22%;
       text-align: center;
       z-index: 10;
       width: 100%;
@@ -322,15 +318,21 @@
     }
     .tunnel-msg h2 {
       font-family: 'Dancing Script', cursive;
-      font-size: 38px;
+      font-size: 42px;
       color: #ffffff;
-      text-shadow: 0 0 20px #FF2A7A;
+      text-shadow: 0 0 25px #FF2A7A, 0 0 45px #FF6584;
+      animation: pulseGlow 1.4s infinite alternate ease-in-out;
     }
     .tunnel-msg p {
       font-family: 'Caveat', cursive;
-      font-size: 24px;
+      font-size: 26px;
       color: #FFD166;
-      margin-top: 8px;
+      margin-top: 10px;
+      text-shadow: 0 0 15px rgba(255, 209, 102, 0.8);
+    }
+    @keyframes pulseGlow {
+      0% { transform: scale(0.96); opacity: 0.85; }
+      100% { transform: scale(1.04); opacity: 1; }
     }
 
     /* Galaxy Header */
@@ -347,8 +349,8 @@
     }
     .dedication-banner {
       flex: 1;
-      background: rgba(30, 16, 53, 0.88);
-      border: 1px solid rgba(255, 42, 122, 0.65);
+      background: rgba(30, 16, 53, 0.90);
+      border: 1px solid rgba(255, 42, 122, 0.7);
       border-radius: 18px;
       padding: 8px 14px;
       font-family: 'Dancing Script', cursive;
@@ -357,8 +359,8 @@
       color: #ffffff;
       text-align: center;
       line-height: 1.25;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.4);
-      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+      backdrop-filter: blur(10px);
     }
 
     /* Floating zoom buttons */
@@ -369,32 +371,32 @@
       transform: translateY(-50%);
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
       z-index: 20;
     }
 
-    /* Bottom Pointer and Cards Dock */
+    /* Bottom Section: Raised safely above watermarks and navigation bars */
     .bottom-section {
       position: absolute;
-      bottom: 14px;
+      bottom: 48px; /* Elevated safely above mobile watermarks */
       left: 14px;
       right: 14px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      z-index: 20;
+      z-index: 25;
     }
     .pointer-badge {
       background: rgba(30, 16, 53, 0.94);
-      border: 1.2px solid rgba(255, 42, 122, 0.8);
+      border: 1.2px solid rgba(255, 42, 122, 0.85);
       border-radius: 20px;
       padding: 7px 18px;
       font-family: 'Dancing Script', cursive;
       font-size: 20px;
       font-weight: 700;
       color: #ffffff;
-      box-shadow: 0 4px 16px rgba(255, 42, 122, 0.45);
-      margin-bottom: 8px;
+      box-shadow: 0 4px 18px rgba(255, 42, 122, 0.5);
+      margin-bottom: 10px;
       animation: bouncePointer 0.7s infinite alternate ease-in-out;
       cursor: pointer;
     }
@@ -404,36 +406,38 @@
     }
     .cards-dock {
       width: 100%;
-      background: rgba(30, 16, 53, 0.90);
-      border: 1px solid rgba(255, 42, 122, 0.45);
+      background: rgba(30, 16, 53, 0.92);
+      border: 1.2px solid rgba(255, 42, 122, 0.55);
       border-radius: 22px;
       padding: 10px 14px;
       display: flex;
       gap: 10px;
       overflow-x: auto;
       scrollbar-width: none;
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55);
     }
     .cards-dock::-webkit-scrollbar {
       display: none;
     }
     .card-dock-btn {
-      background: rgba(255, 42, 122, 0.28);
-      border: 1px solid rgba(255, 209, 102, 0.4);
+      background: rgba(255, 42, 122, 0.32);
+      border: 1px solid rgba(255, 209, 102, 0.5);
       color: white;
-      padding: 8px 16px;
+      padding: 9px 18px;
       border-radius: 16px;
-      font-size: 13px;
+      font-size: 13.5px;
       font-weight: 700;
       white-space: nowrap;
       cursor: pointer;
       display: flex;
       align-items: center;
       gap: 6px;
-      transition: background 0.2s;
+      transition: background 0.2s, transform 0.15s;
     }
     .card-dock-btn:active {
-      background: rgba(255, 42, 122, 0.5);
+      background: rgba(255, 42, 122, 0.6);
+      transform: scale(0.95);
     }
 
     /* Modal for Letter Display */
@@ -443,29 +447,32 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.75);
+      background: rgba(0, 0, 0, 0.78);
       display: none;
       align-items: center;
       justify-content: center;
       z-index: 100;
       padding: 16px;
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(10px);
     }
     .modal-overlay.active {
       display: flex;
     }
     .letter-modal {
       background: #1E1035;
-      border: 1.5px solid rgba(255, 42, 122, 0.7);
+      border: 1.5px solid rgba(255, 42, 122, 0.75);
       border-radius: 24px;
       max-width: 440px;
       width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
       padding: 22px;
       position: relative;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.7);
       display: flex;
       flex-direction: column;
       align-items: center;
+      margin-bottom: 24px;
     }
     .letter-modal-header {
       width: 100%;
@@ -473,6 +480,7 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 12px;
+      padding-right: 32px;
     }
     .modal-title-text {
       font-family: 'Dancing Script', cursive;
@@ -522,7 +530,7 @@
       text-align: center;
     }
     .letter-msg-box {
-      background: rgba(0,0,0,0.4);
+      background: rgba(0,0,0,0.45);
       border: 1px solid rgba(255, 209, 102, 0.4);
       border-radius: 16px;
       padding: 16px;
@@ -531,40 +539,41 @@
       font-size: 24px;
       color: #FFF0F3;
       line-height: 1.35;
+      width: 100%;
     }
     .close-modal-btn {
       position: absolute;
       top: 14px;
       right: 14px;
-      width: 32px;
-      height: 32px;
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.18);
       border: none;
       color: white;
-      font-size: 16px;
+      font-size: 17px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: background 0.2s;
+    }
+    .close-modal-btn:active {
+      background: rgba(255, 42, 122, 0.6);
     }
   </style>
 </head>
 <body>
 
-  <!-- Audio Elements -->
-  <audio id="audio-voice" src="assets/welcome_voice.mp3" preload="auto"></audio>
+  <!-- Audio Element: Todo a su tiempo (Neton Vega) -->
   <audio id="audio-song" src="assets/love_song.mp3" preload="auto"></audio>
 
   <!-- ==================== SCREEN 1: WELCOME ==================== -->
   <div id="screen-welcome" class="screen active">
     <canvas id="ambient-canvas"></canvas>
 
-    <div class="top-bar">
-      <div id="voice-toggle-btn" class="pill-btn">
-        <span id="voice-icon">🎙️</span> <span id="voice-text">Voz IA: Hablando</span>
-      </div>
-      <div id="welcome-music-btn" class="icon-btn">🎵</div>
+    <div class="top-bar" style="justify-content: flex-end;">
+      <div id="welcome-music-btn" class="icon-btn" title="Música">🎵</div>
     </div>
 
     <div class="content-overlay">
@@ -581,7 +590,6 @@
         <p class="card-text">
           Bienvenida Hill, tengo algo muy especial que decirte hoy, no se si sea necesario, pero bueno dale a ese botón de ahi abajo
         </p>
-        <div class="voice-badge">🎙️ Narrando mensaje para ti...</div>
       </div>
 
       <button id="btn-enter" class="primary-btn">Entra aqui</button>
@@ -652,7 +660,7 @@
       <div class="dedication-banner">
         Para ti Hillary, amor que me enamora cada dia mas, Te amo un monton
       </div>
-      <div id="galaxy-music-btn" class="icon-btn">🎵</div>
+      <div id="galaxy-music-btn" class="icon-btn" title="Música">🎵</div>
     </div>
 
     <!-- Zoom Controls -->
@@ -662,7 +670,7 @@
       <div id="btn-zoom-reset" class="icon-btn" title="Reiniciar">↺</div>
     </div>
 
-    <!-- Bottom Section: Animated indicator and Cards Dock -->
+    <!-- Bottom Section: Elevated safely above watermarks -->
     <div class="bottom-section">
       <div class="pointer-badge" onclick="scrollCards()">
         Mira tus cartas mi pulga 👇
@@ -702,7 +710,7 @@
   </div>
 
   <script>
-    // 6 Love Letters Data
+    // 6 Love Letters Data verbatim
     const lettersData = [
       { id: 1, title: "Carta 1 💘", dateTag: "Nuestro comienzo", phrase: "Desde el fondo de mi corazón 💘", message: "Te amo hillary, con todo mi alma", photo: "assets/photo_1.jpg" },
       { id: 2, title: "Carta 2 💘", dateTag: "Agradecido con la vida", phrase: "El regalo más hermoso del cielo 💘", message: "Eres lo mejor que me pudo pasar en este mundo y estoy agradecido contigo", photo: "assets/photo_2.jpg" },
@@ -712,23 +720,13 @@
       { id: 6, title: "Carta 6 💘", dateTag: "Mi refugio y paz", phrase: "Mi calma y mi universo entero 💘", message: "Te amo y eres lo mas lindo que me pudo suceder, eres mi calma y mi paz", photo: "assets/photo_6.jpg" }
     ];
 
-    // Audio Elements
-    const audioVoice = document.getElementById('audio-voice');
+    // Audio Element
     const audioSong = document.getElementById('audio-song');
     const welcomeVid = document.getElementById('welcome-media');
 
     function playMedia() {
       if (welcomeVid) {
         welcomeVid.play().catch(() => {});
-      }
-      if (audioVoice) {
-        audioVoice.play().then(() => {
-          document.getElementById('voice-icon').innerText = '🎙️';
-          document.getElementById('voice-text').innerText = 'Voz IA: Hablando';
-        }).catch(() => {
-          document.getElementById('voice-icon').innerText = '🔊';
-          document.getElementById('voice-text').innerText = 'Escuchar Voz IA';
-        });
       }
     }
 
@@ -740,25 +738,7 @@
     document.addEventListener('touchstart', playMedia, { once: true });
     document.addEventListener('click', playMedia, { once: true });
 
-    document.getElementById('voice-toggle-btn').addEventListener('click', () => {
-      if (audioVoice.paused) {
-        audioVoice.currentTime = 0;
-        audioVoice.play();
-        document.getElementById('voice-icon').innerText = '🎙️';
-        document.getElementById('voice-text').innerText = 'Voz IA: Hablando';
-      } else {
-        audioVoice.pause();
-        document.getElementById('voice-icon').innerText = '🔇';
-        document.getElementById('voice-text').innerText = 'Escuchar Voz IA';
-      }
-    });
-
-    audioVoice.addEventListener('ended', () => {
-      document.getElementById('voice-icon').innerText = '🔊';
-      document.getElementById('voice-text').innerText = 'Escuchar Voz IA';
-    });
-
-    // Song Loop (strictly 2:23 to 3:00)
+    // Song Loop strictly from minute 2:23 (143.5s) to 3:00 (180s)
     audioSong.addEventListener('timeupdate', () => {
       if (audioSong.currentTime >= 180) {
         audioSong.currentTime = 143.5;
@@ -788,7 +768,6 @@
 
     // Enter Button -> Survey
     document.getElementById('btn-enter').addEventListener('click', () => {
-      audioVoice.pause();
       showScreen('screen-survey');
       initSurveyCanvas();
     });
@@ -859,7 +838,7 @@
 
       const hearts = [];
       const colors = ['#FF2A7A', '#FF6584', '#F7BAC5', '#FFD166'];
-      for (let i = 0; i < 28; i++) {
+      for (let i = 0; i < 30; i++) {
         hearts.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
@@ -893,7 +872,7 @@
       }
 
       function render() {
-        ctx.fillStyle = '#090314';
+        ctx.fillStyle = '#06020c';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         hearts.forEach(h => {
@@ -923,19 +902,19 @@
       canvas.height = window.innerHeight;
 
       const particles = [];
-      for (let i = 0; i < 40; i++) {
+      for (let i = 0; i < 45; i++) {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
           speed: 0.3 + Math.random() * 0.6,
           radius: 1.2 + Math.random() * 2.5,
-          color: ['#FF2A7A', '#FFD166', '#FFFFFF'][Math.floor(Math.random() * 3)],
+          color: ['#FF2A7A', '#FFD166', '#FFFFFF', '#7DF9FF'][Math.floor(Math.random() * 4)],
           alpha: 0.3 + Math.random() * 0.5
         });
       }
 
       function renderSurvey() {
-        ctx.fillStyle = '#090314';
+        ctx.fillStyle = '#06020c';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         particles.forEach(p => {
@@ -953,14 +932,14 @@
       renderSurvey();
     }
 
-    // ==================== TUNNEL & AUDIO RAMP ====================
+    // ==================== BRILLIANT WARP TUNNEL & AUDIO RAMP ====================
     function startTunnelAnimation() {
       audioSong.currentTime = 143.5;
       audioSong.volume = 0.15;
       audioSong.play().catch(() => {});
 
       let progress = 0;
-      const tunnelDuration = 3800;
+      const tunnelDuration = 3900;
       const startTime = performance.now();
 
       const rampInterval = setInterval(() => {
@@ -982,46 +961,95 @@
     function runTunnelCanvas() {
       const canvas = document.getElementById('tunnel-canvas');
       const ctx = canvas.getContext('2d');
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      ctx.scale(dpr, dpr);
 
-      const stars = [];
-      for (let i = 0; i < 180; i++) {
-        stars.push({
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      const cx = w / 2;
+      const cy = h / 2;
+      const maxDist = Math.hypot(cx, cy);
+
+      // Brilliant hyperspace light beams
+      const beams = [];
+      const colors = ['#FFFFFF', '#70EEFF', '#FF2A7A', '#FFD166', '#E2B6FF'];
+      for (let i = 0; i < 280; i++) {
+        beams.push({
           angle: Math.random() * Math.PI * 2,
           dist: Math.random(),
-          speed: 0.008 + Math.random() * 0.015,
-          length: 20 + Math.random() * 50,
-          color: ['#FFFFFF', '#70EEFF', '#FF2A7A', '#FFD166'][Math.floor(Math.random() * 4)]
+          speed: 0.009 + Math.random() * 0.02,
+          length: 30 + Math.random() * 70,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          thickness: 1.0 + Math.random() * 2.2
         });
       }
 
+      // Expanding rings shockwaves
+      const rings = [
+        { radius: 20, speed: 4.5, color: 'rgba(255, 42, 122, 0.45)' },
+        { radius: 80, speed: 5.5, color: 'rgba(112, 238, 255, 0.4)' },
+        { radius: 140, speed: 6.5, color: 'rgba(255, 209, 102, 0.4)' }
+      ];
+
       let running = true;
+      let frame = 0;
+
       function animate() {
         if (!running) return;
-        ctx.fillStyle = 'rgba(9, 3, 20, 0.35)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        frame++;
 
-        const cx = canvas.width / 2;
-        const cy = canvas.height / 2;
-        const maxDist = Math.hypot(cx, cy);
+        ctx.fillStyle = 'rgba(6, 2, 12, 0.28)';
+        ctx.fillRect(0, 0, w, h);
 
-        stars.forEach(s => {
-          s.dist = (s.dist + s.speed) % 1;
-          const r = s.dist * maxDist;
-          const rPrev = Math.max(0, r - s.length * s.dist);
+        // Brilliant glowing hyper-core
+        const coreGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, 140);
+        coreGrad.addColorStop(0, 'rgba(255, 255, 255, 0.9)');
+        coreGrad.addColorStop(0.3, 'rgba(255, 42, 122, 0.55)');
+        coreGrad.addColorStop(0.7, 'rgba(112, 238, 255, 0.25)');
+        coreGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+        ctx.fillStyle = coreGrad;
+        ctx.beginPath();
+        ctx.arc(cx, cy, 140, 0, Math.PI * 2);
+        ctx.fill();
 
-          const x1 = cx + Math.cos(s.angle) * rPrev;
-          const y1 = cy + Math.sin(s.angle) * rPrev;
-          const x2 = cx + Math.cos(s.angle) * r;
-          const y2 = cy + Math.sin(s.angle) * r;
+        // Expanding light rings
+        rings.forEach(ring => {
+          ring.radius += ring.speed;
+          if (ring.radius > maxDist) ring.radius = 20;
+          ctx.strokeStyle = ring.color;
+          ctx.lineWidth = 2.5;
+          ctx.beginPath();
+          ctx.arc(cx, cy, ring.radius, 0, Math.PI * 2);
+          ctx.stroke();
+        });
 
-          ctx.strokeStyle = s.color;
-          ctx.lineWidth = 1 + s.dist * 3;
+        // Radiant Light Beams
+        beams.forEach(b => {
+          b.dist = (b.dist + b.speed) % 1;
+          const r = b.dist * maxDist;
+          const rPrev = Math.max(0, r - b.length * b.dist);
+
+          const x1 = cx + Math.cos(b.angle) * rPrev;
+          const y1 = cy + Math.sin(b.angle) * rPrev;
+          const x2 = cx + Math.cos(b.angle) * r;
+          const y2 = cy + Math.sin(b.angle) * r;
+
+          ctx.strokeStyle = b.color;
+          ctx.lineWidth = b.thickness * (1 + b.dist * 3.5);
           ctx.beginPath();
           ctx.moveTo(x1, y1);
           ctx.lineTo(x2, y2);
           ctx.stroke();
+
+          // Glowing particle spark at head
+          if (b.dist > 0.4) {
+            ctx.fillStyle = '#FFFFFF';
+            ctx.beginPath();
+            ctx.arc(x2, y2, 1.8 + b.dist * 2.5, 0, Math.PI * 2);
+            ctx.fill();
+          }
         });
 
         requestAnimationFrame(animate);
@@ -1030,7 +1058,7 @@
       setTimeout(() => { running = false; }, 4200);
     }
 
-    // ==================== 3D SPIRAL GALAXY ====================
+    // ==================== 3D SPIRAL GALAXY WITH SHOOTING STARS & DEEP SPACE ====================
     let galaxyInitialized = false;
     let rotX = -0.48;
     let rotY = 0.15;
@@ -1069,8 +1097,8 @@
 
       const stars = [];
 
-      // 1. BIG Central 3D Heart (approx 650 stars) - Prominent, beautiful heart silhouette
-      const heartStarsCount = 650;
+      // 1. BIG Central 3D Heart (750 stars) - Prominent, dense, radiant romantic silhouette
+      const heartStarsCount = 750;
       for (let i = 0; i < heartStarsCount; i++) {
         const t = Math.random() * Math.PI * 2;
         const sinT = Math.sin(t);
@@ -1091,10 +1119,10 @@
         });
       }
 
-      // 2. BIG Central Star Arrow piercing through the heart (approx 180 stars)
+      // 2. BIG Central Star Arrow piercing through the heart (approx 220 stars)
       // Shaft
-      for (let i = 0; i <= 100; i++) {
-        const f = i / 100;
+      for (let i = 0; i <= 120; i++) {
+        const f = i / 120;
         stars.push({
           x: -180 + f * 370 + (Math.random() - 0.5) * 5,
           y: 150 - f * 315 + (Math.random() - 0.5) * 5,
@@ -1108,7 +1136,7 @@
       }
 
       // Arrowhead cluster
-      for (let i = 0; i < 45; i++) {
+      for (let i = 0; i < 55; i++) {
         const spread = Math.random() * 35;
         stars.push({
           x: 190 - spread + (Math.random() - 0.5) * 12,
@@ -1123,7 +1151,7 @@
       }
 
       // Arrow feathers cluster
-      for (let i = 0; i < 40; i++) {
+      for (let i = 0; i < 45; i++) {
         const spread = Math.random() * 32;
         stars.push({
           x: -180 + spread + (Math.random() - 0.5) * 12,
@@ -1137,22 +1165,22 @@
         });
       }
 
-      // 3. Wide Expansive Spiral Arms (3 arms, 1800 stars)
-      const armColors = ['#FFB6C1', '#FF69B4', '#FFD700', '#FFFFFF', '#E2B6FF', '#7DF9FF'];
+      // 3. Wide Expansive Spiral Arms (3 arms, 2250 stars)
+      const armColors = ['#FFB6C1', '#FF69B4', '#FFD700', '#FFFFFF', '#E2B6FF', '#7DF9FF', '#8AE8FF'];
       const numArms = 3;
       for (let arm = 0; arm < numArms; arm++) {
         const armPhase = arm * (2 * Math.PI / numArms);
-        for (let i = 0; i < 600; i++) {
+        for (let i = 0; i < 750; i++) {
           const f = Math.random();
-          const r = 185 + f * 460;
+          const r = 185 + f * 470;
           const theta = armPhase + (2.1 * Math.log(r / 110));
-          const armWidth = 16 + f * 42;
+          const armWidth = 16 + f * 44;
           const perp = theta + Math.PI / 2;
           const jitter = (Math.random() - 0.5) * armWidth;
 
           const px = r * Math.cos(theta) + jitter * Math.cos(perp);
           const pz = r * Math.sin(theta) + jitter * Math.sin(perp);
-          const py = (Math.random() - 0.5) * ((1 - f) * 30 + 10);
+          const py = (Math.random() - 0.5) * ((1 - f) * 32 + 10);
 
           stars.push({
             x: px,
@@ -1166,19 +1194,65 @@
         }
       }
 
-      // Ambient halo stars
-      for (let i = 0; i < 180; i++) {
-        const r = 260 + Math.random() * 460;
+      // 4. Deep Outer Space Cosmic Stars Field (480 stars)
+      for (let i = 0; i < 480; i++) {
+        const r = 240 + Math.random() * 520;
         const theta = Math.random() * Math.PI * 2;
-        const phi = (Math.random() - 0.5) * (Math.PI * 0.7);
+        const phi = (Math.random() - 0.5) * (Math.PI * 0.75);
         stars.push({
           x: r * Math.cos(phi) * Math.cos(theta),
           y: r * Math.sin(phi),
           z: r * Math.cos(phi) * Math.sin(theta),
-          baseSize: 1.0 + Math.random() * 1.8,
+          baseSize: 1.0 + Math.random() * 2.0,
+          color: ['#FFFFFF', '#D8F3DC', '#FFD166', '#E2B6FF', '#70EEFF'][Math.floor(Math.random() * 5)],
+          isCore: false,
+          twinkle: Math.random() * Math.PI * 2
+        });
+      }
+
+      // 5. Ambient Stardust Micro-Particles (350 sparkling dust points)
+      for (let i = 0; i < 350; i++) {
+        const r = 160 + Math.random() * 600;
+        const theta = Math.random() * Math.PI * 2;
+        const phi = (Math.random() - 0.5) * Math.PI;
+        stars.push({
+          x: r * Math.cos(phi) * Math.cos(theta),
+          y: r * Math.sin(phi),
+          z: r * Math.cos(phi) * Math.sin(theta),
+          baseSize: 0.6 + Math.random() * 1.2,
           color: '#FFFFFF',
           isCore: false,
           twinkle: Math.random() * Math.PI * 2
+        });
+      }
+
+      // ==================== RANDOM SHOOTING STARS (ESTRELLAS FUGACES) ====================
+      const shootingStars = [];
+      function spawnShootingStar() {
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+        // Start anywhere along the top 40% of the screen
+        const startX = Math.random() < 0.6 ? Math.random() * w : (Math.random() < 0.5 ? -40 : w + 40);
+        const startY = Math.random() * (h * 0.42);
+        // Angle downwards diagonally (approx 35° to 55°)
+        const angle = Math.PI / 4 + (Math.random() - 0.5) * 0.35;
+        const speed = 15 + Math.random() * 11;
+        const length = 110 + Math.random() * 130;
+        const colors = [
+          { head: '#FFFFFF', trail: '#8AE8FF' },
+          { head: '#FFFFFF', trail: '#FFD166' },
+          { head: '#FFFFFF', trail: '#FF6584' },
+          { head: '#FFFFFF', trail: '#E2B6FF' }
+        ];
+        shootingStars.push({
+          x: startX,
+          y: startY,
+          dx: Math.cos(angle) * speed,
+          dy: Math.sin(angle) * speed,
+          len: length,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          life: 1.0,
+          decay: 0.016 + Math.random() * 0.014
         });
       }
 
@@ -1287,7 +1361,7 @@
         const h = window.innerHeight;
 
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        ctx.fillStyle = '#090314';
+        ctx.fillStyle = '#06020c';
         ctx.fillRect(0, 0, w, h);
 
         const cx = w / 2;
@@ -1357,6 +1431,50 @@
           ctx.fillText(`${w.text} ${w.emoji}`, p.x, p.y);
           ctx.shadowBlur = 0;
         });
+
+        // ==================== RENDER SHOOTING STARS (ESTRELLAS FUGACES) ====================
+        if (Math.random() < 0.035 && shootingStars.length < 3) {
+          spawnShootingStar();
+        }
+
+        for (let i = shootingStars.length - 1; i >= 0; i--) {
+          const st = shootingStars[i];
+          st.x += st.dx;
+          st.y += st.dy;
+          st.life -= st.decay;
+
+          if (st.life <= 0 || st.x > w + 200 || st.y > h + 200) {
+            shootingStars.splice(i, 1);
+            continue;
+          }
+
+          const dist = Math.hypot(st.dx, st.dy);
+          const tailX = st.x - (st.dx / dist) * st.len;
+          const tailY = st.y - (st.dy / dist) * st.len;
+
+          const grad = ctx.createLinearGradient(tailX, tailY, st.x, st.y);
+          grad.addColorStop(0, 'rgba(255, 255, 255, 0)');
+          grad.addColorStop(0.7, st.color.trail);
+          grad.addColorStop(1, st.color.head);
+
+          ctx.save();
+          ctx.globalAlpha = Math.max(0, st.life);
+          ctx.strokeStyle = grad;
+          ctx.lineWidth = 2.4;
+          ctx.beginPath();
+          ctx.moveTo(tailX, tailY);
+          ctx.lineTo(st.x, st.y);
+          ctx.stroke();
+
+          // Brilliant spark at head
+          ctx.fillStyle = '#FFFFFF';
+          ctx.shadowColor = st.color.trail;
+          ctx.shadowBlur = 8;
+          ctx.beginPath();
+          ctx.arc(st.x, st.y, 2.5, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        }
 
         ctx.globalAlpha = 1.0;
         requestAnimationFrame(render);
